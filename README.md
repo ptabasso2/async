@@ -98,10 +98,7 @@ The example below is the structure after having clone the project.
                         └── asyncmethod
                             ├── AsyncController.java
                             ├── AsyncMethodApplication.java
-                            ├── AsyncNetTime.java
-                            ├── CpuIntensiveOperations.java
                             ├── ThreadPoolTaskExecutorService.java
-                            └── WebLookupService.java
 
 ```
 
