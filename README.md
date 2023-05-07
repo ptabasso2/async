@@ -105,10 +105,11 @@ The example below is the structure after having clone the project.
 
 
 The main components of this service can be described as follows:
-+ A single microservice (`springasync` ) that can be configured to spin up as many threads as needed through `-Dthreadnum` and the number of iterations to execute an arithmetic instruction </br>
-through `-Diteration`. Both parameters have default values which are respectively (`20` and `10000`).
-+ The various docker files needed to build the images and the `docker-compose` configuration file to spin up the two containers (`dd-agent-dogfood-jmx`, `springasync).
-+ Custom instrumentation using the OpenTelemetry API to add the spans related to the methods performing the computation steps  
++ A single microservice (`springasync` ) that can be configured to spin up as many threads as needed through `-Dthreadnum` and the number of iterations to execute an arithmetic instruction
+through `-Diteration`. If not specified, both parameters have default values which are respectively (`20` and `10000`).
++ The various docker files needed to build the images and the `docker-compose` configuration file to spin up the two containers (`dd-agent-dogfood-jmx`, `springasync`).
++ Custom instrumentation using the `OpenTelemetry API` to add the spans related to the methods performing the computation steps.
++ The various configuration files for having the application deployed on a `k8s` environment (helm chart for the DD agent and a deployment manifest to deploy the application).
 
 ## Building <a name="app"></a> and running the project ##
 
