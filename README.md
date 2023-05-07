@@ -174,7 +174,6 @@ Status: Downloaded newer image for gcr.io/datadoghq/agent:latest-jmx
 Now by running a few curl commands on `/invoke`, and after a few seconds, we can check that our service is being instrumented and that the details are reflected in this trace flamegraph. 
 
 
-
 ## Using docker compose ##
 
  
