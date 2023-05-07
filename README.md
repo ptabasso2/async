@@ -10,6 +10,7 @@ The sections of this tutorial are structured as follows
 * Pre-requisites
 * Clone the repository
 * Directory structure of the [project](#project)
+* Overview of the [application](#overview)
 * Building and running the [application](#app)
 * [Testing](#testing) the application
 * Building the application and running it on a [kubernetes](#k8s) cluster
@@ -20,7 +21,7 @@ In each section, we'll describe the required steps to take in order to reach the
 
 ## Goal of this lab
 
-The purpose of this lab is to use and set up a spring boot application using various async activities and instrumenting it with Datadog
+The purpose of this lab is to use and set up a spring boot application using various async activities and instrumenting it with Datadog. More specifically this service will be focusing on CPU overhead and will simulate high CPU times.
 
 
 ## Pre-requisites
@@ -100,7 +101,14 @@ The example below is the structure after having clone the project.
 
 ```
 
+## Overview of the <a name="overview"></a>application
 
+
+The main components of this service can be described as follows:
++ A single microservice (`springasync` ) that can be configured to spin up as many threads as needed through `-Dthreadnum` and the number of iterations to execute an arithmetic instruction </br>
+through `-Diteration`. Both parameters have default values which are respectively (`20` and `10000`).
++ The various docker files needed to build the images and the `docker-compose` configuration file to spin up the two containers (`dd-agent-dogfood-jmx`, `springasync).
++ Custom instrumentation using the OpenTelemetry API to add the spans related to the methods performing the computation steps  
 
 ## Building <a name="app"></a> and running the project ##
 
