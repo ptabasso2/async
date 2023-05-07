@@ -10,10 +10,9 @@ The sections of this tutorial are structured as follows
 * Pre-requisites
 * Clone the repository
 * Directory structure of the [project](#project)
-* Overview of the [application](#app)
-* Testing the application and generating [load](#load)
+* Building and running the [application](#app)
+* [Testing](#testing) the application
 * Building the application and running it on a [kubernetes](#k8s) cluster
-  * Instrumenting app in k8s through [manual](#manual) configuration
 * End
 
 In each section, we'll describe the required steps to take in order to reach the goal.
@@ -52,7 +51,7 @@ The purpose of this lab is to use and set up a spring boot application using var
 The example below is the structure after having clone the project.
 
 ```shell
-[root@pt-instance-6:~/springasync]$ tree
+[root@pt-instance-6:~/async]$ tree
 .
 ├── Dockerfiles
 │   └── Dockerfile.springasync
@@ -103,14 +102,14 @@ The example below is the structure after having clone the project.
 
 
 
-## Building and running **springasync** ##
+## Building <a name="app"></a> and running **springasync** ##
 
 ````shell
 [root@pt-instance-6:~/async]$ cd springasync
 [root@pt-instance-6:~/async/springasync]$ gradle build
 
 BUILD SUCCESSFUL in 10s
-[root@pt-instance-6:~/async/springasync]$ nohup java -jar build/libs/spring-back.jar &
+[root@pt-instance-6:~/async/springasync]$ nohup java -jar build/libs/async-method-0.0.1-SNAPSHOT.jar &
 [1] 19870
 [root@pt-instance-6:~/springasync/springasync]$ nohup: ignoring input and appending output to 'nohup.out'
 ````
@@ -130,7 +129,7 @@ Everything is now in place. We can now start instrumenting this service.
 First set your API Key:
 
 ````shell
-[root@pt-instance-6:~/springblog]$ export DD_API_KEY=<Your api key>
+[root@pt-instance-6:~/async]$ export DD_API_KEY=<Your api key>
 ````
 
 Then let's run the agent. As docker is installed on our environment, we will use a dockerized version of the agent. 
@@ -143,7 +142,7 @@ By default, the Datadog Agent is enabled in your `datadog.yaml` file under `apm_
 
 
 ````shell
-[root@pt-instance-6:~/springblog]$ docker run -d --network app --name dd-agent-dogfood-jmx -v /var/run/docker.sock:/var/run/docker.sock:ro \
+[root@pt-instance-6:~/async]$ docker run -d --network app --name dd-agent-dogfood-jmx -v /var/run/docker.sock:/var/run/docker.sock:ro \
 -v /proc/:/host/proc/:ro \
 -v /sys/fs/cgroup/:/host/sys/fs/cgroup:ro \
 -v /home/pej/conf.d/:/etc/datadog-agent/conf.d \
@@ -164,7 +163,7 @@ Status: Downloaded newer image for gcr.io/datadoghq/agent:latest-jmx
 2d1eec89c2196d298d1e3edf1e9f879c0fc3be593d96f1469cfacc2cacfc18b4
 ````
 
-## Instrumenting **springasync** ##
+## Instrumenting the service ##
 
 ````
 [root@pt-instance-6:~/async/springasync]$ nohup java -javaagent:dd-java-agent.jar -Ddd.service=springasync -Ddd.env=dev -Ddd.version=12 -Ddd.tags=env:dev -Ddd.profiling.enabled=true -XX:FlightRecorderOptions=stackdepth=256 -Ddd.profiling.ddprof.cpu.enabled=true -Ddd.trace.otel.enabled=true -Diteration=500000 -jar build/libs/async-method-0.0.1-SNAPSHOT.jar &
@@ -280,7 +279,7 @@ service/springasync created
 ````
 
 
-## Testing the application ##
+## Testing the <a name="testing"></a> application ##
 
 We can now curl the enpoint by using the external IP of the service or using port forwarding as follows:
 
