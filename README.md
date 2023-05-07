@@ -1,4 +1,5 @@
 ![GitHub](https://img.shields.io/github/license/ptabasso2/async?style=plastic)
+![GitLab Release (latest by date)](https://img.shields.io/gitlab/v/release/ptabasso2/async?style=plastic)
 ![GitHub last commit](https://img.shields.io/github/last-commit/ptabasso2/async?style=plastic)
 
 # Instrumenting a spring boot application using Datadog
