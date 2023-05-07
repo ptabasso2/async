@@ -102,7 +102,7 @@ The example below is the structure after having clone the project.
 
 
 
-## Building <a name="app"></a> and running **springasync** ##
+## Building <a name="app"></a> and running the project ##
 
 ````shell
 [root@pt-instance-6:~/async]$ cd springasync
