@@ -285,22 +285,22 @@ ddagent-datadog-x7zgj                            4/4     Running   0          60
 ddagent-kube-state-metrics-6df45df688-b5gfn      1/1     Running   0          59s
 ````
 
-Deploying the application
+Deploying the **application**
 
 ````shell
 [root@pt-instance-6:~/async]$ kubectl apply -f k8s/deployment.yaml 
-deployment.apps/loadasync created
+deployment.apps/springasync created
+service/springasync created
 ````
 
 This will contantly run curl commands and hit the endpoint `/invoke`
 
 
-Deploying the load generator
+Deploying the **load generator**
 
 ````shell
 [root@pt-instance-6:~/async]$ kubectl apply -f k8s/loadgen.yaml 
-deployment.apps/springasync created
-service/springasync created
+deployment.apps/loadasync created
 ````
 
 ## Testing the <a name="testing"></a> application ##
