@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: loadasync
+  labels:
+    tags.datadoghq.com/env: "dev"
+    tags.datadoghq.com/service: "loadasync"
+    tags.datadoghq.com/version: "12"
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: loadasync
+  minReadySeconds: 15
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 1
+      maxSurge: 1
+  template:
+    metadata:
+      labels:
+        name: loadasync
+        tags.datadoghq.com/env: "dev"
+        tags.datadoghq.com/service: "loadasync"
+        tags.datadoghq.com/version: "12"
+    spec:
+      containers:
+      - image: pejese/springasync:v0
+        command: ["/bin/sh"]
+        args: ["-c", "while true; do curl springasync:8080/invoke; done"]
+        imagePullPolicy: Always
+        name: loadasync

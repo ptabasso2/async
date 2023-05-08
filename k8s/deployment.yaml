@@ -67,7 +67,7 @@ spec:
           - name: JAVA_TOOL_OPTIONS
             value: >
               -javaagent:/app/javaagent/dd-java-agent.jar 
-              -Ddd.service=springasync -Ddd.env=dev -Ddd.version=12 -Ddd.tags=env:dev -Ddd.trace.http.client.split-by-domain=true -Ddd.profiling.enabled=true -XX:FlightRecorderOptions=stackdepth=256 -Ddd.profiling.ddprof.cpu.enabled=true -Ddd.trace.otel.enabled=true -Diteration=500000 
+              -Ddd.service=springasync -Ddd.env=dev -Ddd.version=12 -Ddd.tags=env:dev -Ddd.trace.http.client.split-by-domain=true -Ddd.profiling.enabled=true -XX:FlightRecorderOptions=stackdepth=256 -Ddd.profiling.ddprof.cpu.enabled=true -Ddd.trace.otel.enabled=true -Diteration=10000
         ports:
           - containerPort: 8080
       volumes:
