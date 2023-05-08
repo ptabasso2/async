@@ -289,10 +289,19 @@ Deploying the application
 
 ````shell
 [root@pt-instance-6:~/async]$ kubectl apply -f k8s/deployment.yaml 
+deployment.apps/loadasync created
+````
+
+This will contantly run curl commands and hit the endpoint `/invoke`
+
+
+Deploying the load generator
+
+````shell
+[root@pt-instance-6:~/async]$ kubectl apply -f k8s/loadgen.yaml 
 deployment.apps/springasync created
 service/springasync created
 ````
-
 
 ## Testing the <a name="testing"></a> application ##
 
