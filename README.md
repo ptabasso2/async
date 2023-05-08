@@ -23,9 +23,9 @@ The sections of this tutorial are structured as follows
 In each section, we'll describe the required steps to take in order to reach the goal.
 
 
-## Goal of this lab
+## Goal of this project
 
-The purpose of this lab is to use and set up a spring boot application using various async activities and instrumenting it with Datadog. More specifically this service will be focusing on CPU overhead and will simulate high CPU times.
+The purpose of this project is to use and set up a spring boot application using various async activities and instrumenting it with Datadog. More specifically this service will be focusing on CPU overhead and will simulate high CPU times.
 
 
 ## Pre-requisites
