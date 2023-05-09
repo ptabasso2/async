@@ -68,20 +68,6 @@ The example below is the structure after having clone the project.
 │   │   └── values.yaml
 │   └── deployment.yaml
 └── springasync
-    ├── build
-    │   ├── classes
-    │   │   └── java
-    │   │    ...
-    │   ├── generated
-    │   │   └── sources
-..
-    │   ├── libs
-    │   │   └── async-method-0.0.1-SNAPSHOT.jar
-    │   └── tmp
-    │       ├── bootJar
-    │       │   └── MANIFEST.MF
-    │       └── compileJava
-    │           └── source-classes-mapping.txt
     ├── build.gradle
     ├── dd-java-agent.jar
     ├── gradle
